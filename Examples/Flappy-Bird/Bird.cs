@@ -15,7 +15,7 @@ namespace FlappyBird
         public float Radius;
         public float YSpeed = 0;
         public float YAcc;
-        public static float Gravity = 10f;
+        public static float Gravity = 100f;
         public Bird(Vector2 pos,float Rad)
         {
             Pos = pos;
@@ -27,23 +27,19 @@ namespace FlappyBird
         }
         public void Update()
         {
-            Input();
+            BirdInput();
             YAcc+=Gravity;
             YSpeed += YAcc;
             YSpeed = Math.Clamp(YSpeed, -MaxSpeed, MaxSpeed);
             Pos.Y += YSpeed;
         }
         bool CanPress = true;
-        public void Input()
+        public void BirdInput()
         {
-            if (Console.KeyAvailable)
+            if (Input.isKeyPressed(ConsoleKey.Spacebar) && CanPress==true)
             {
-                ConsoleKey readKey = Console.ReadKey().Key;
-                if (readKey == ConsoleKey.Spacebar && CanPress==true)
-                {
-                    YAcc = -100f;
-                    CanPress = false;
-                }
+                YAcc = -200f;
+                CanPress = false;
             }
             else
             {

@@ -39,7 +39,7 @@ namespace Snake
         int Ctr = 0;
         public void Update()
         {
-            Input();
+            SnakeInput();
             if (Ctr%Interval==0)
             {
                 Move();
@@ -48,9 +48,9 @@ namespace Snake
             }
             Ctr++;
         }
-        public void Input()
+        public void SnakeInput()
         {
-
+             
         }
         private void Eat()
         {
